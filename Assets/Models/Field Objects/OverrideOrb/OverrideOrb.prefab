@@ -226,7 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd891da6825da694dbb05ac91d57161a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  throwSpeed: 30
+  throwSpeed: 50
   collisionStallTime: 2
   stallTime: 5
   dropSound: {fileID: 8300000, guid: 69077e7b616b4c246956782748419235, type: 3}
