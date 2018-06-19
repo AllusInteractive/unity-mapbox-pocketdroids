@@ -14,10 +14,12 @@ public class Player : MonoBehaviour {
     private List<GameObject> droids = new List<GameObject>();
     private int level = 1;
 
-    public int getXP { get { return xp; } }
-    public int getRequiredXP { get { return requiredXP; } }
-    public int getLevelBase { get { return levelBase; } }
-    public List<GameObject> getDroids { get { return droids; } }
+    public int XP { get { return xp; } }
+    public int RequiredXP { get { return requiredXP; } }
+    public int LevelBase { get { return levelBase; } }
+    public List<GameObject> Droids { get { return droids; } }
+
+    public int Level { get { return level; } }
 
 	// Use this for initialization
 	void Start () {

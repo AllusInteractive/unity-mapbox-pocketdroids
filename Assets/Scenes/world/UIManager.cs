@@ -18,6 +18,14 @@ public class UIManager : MonoBehaviour {
 
     }
 
+    private void Update() {
+
+        Player currentPlayer = GameManager.Instance.CurrentPlayer;
+        updateLevel(currentPlayer.Level);
+        updateXP(currentPlayer.XP, currentPlayer.RequiredXP);
+        
+    }
+
     public void updateLevel(int level)
     {
 
