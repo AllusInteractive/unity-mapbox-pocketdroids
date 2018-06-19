@@ -9,12 +9,19 @@ public class UIManager : MonoBehaviour {
     [SerializeField] private Text xpText;
     [SerializeField] private Text levelText;
     [SerializeField] private GameObject menu;
+    [SerializeField] private AudioClip menuButtonSound;
+
+    private AudioSource audioSource;
 
     private void Awake() {
 
+        audioSource = GetComponent<AudioSource>();
+
+        Assert.IsNotNull(audioSource);
         Assert.IsNotNull(xpText);
         Assert.IsNotNull(levelText);
         Assert.IsNotNull(menu);
+        Assert.IsNotNull(menuButtonSound);
 
     }
 
@@ -40,9 +47,16 @@ public class UIManager : MonoBehaviour {
 
     }
 
-    public void toggleMenu()
+    private void toggleMenu()
     {
         menu.SetActive(!menu.activeSelf);
+    }
+
+    public void menuButtonClick() {
+
+        audioSource.PlayOneShot(menuButtonSound);
+        toggleMenu();
+
     }
 	
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class Droid : MonoBehaviour {
 
@@ -9,6 +10,17 @@ public class Droid : MonoBehaviour {
 	[SerializeField] private int attack = 0;
 	[SerializeField] private int defense = 0;
 	[SerializeField] private int hp = 10;
+	[SerializeField] private AudioClip crySound;
+
+	private AudioSource audioSource;
+
+	private void Awake()
+	{
+
+		audioSource = GetComponent<AudioSource>();
+		Assert.IsNotNull(crySound);
+		
+	}
 
 	private void Start() {
 		DontDestroyOnLoad(this);
@@ -23,6 +35,8 @@ public class Droid : MonoBehaviour {
 	private void OnMouseDown()
 	{
 		
+		audioSource.PlayOneShot(crySound);
+
 		PocketDroidsSceneManager[] managers = FindObjectsOfType<PocketDroidsSceneManager>();
 		foreach (PocketDroidsSceneManager manager in managers)
 		{
