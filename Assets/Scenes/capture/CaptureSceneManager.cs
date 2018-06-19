@@ -8,6 +8,7 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 	[SerializeField] private GameObject orb;
 	[SerializeField] private Vector3 spawnPoint;
 	private int currentThrowAttempts = 0;
+	private CaptureScreenStatus status = CaptureScreenStatus.InProgress;
 
 	public int MaxThrowAttempts {
 		get { return maxThrowAttempts; }
@@ -17,6 +18,9 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 		get { return currentThrowAttempts; }
 	}
 
+	public CaptureScreenStatus Status {
+		get { return status; }
+	}
 	private void Start() {
 		calculateMaxThrows();
 		currentThrowAttempts = maxThrowAttempts;
@@ -30,7 +34,8 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 		currentThrowAttempts--;
 
 		if (currentThrowAttempts <= 0) {
-
+			if(status != CaptureScreenStatus.Successful)
+				status = CaptureScreenStatus.Failed;
 		} else {
 			Instantiate(orb, spawnPoint, Quaternion.identity);
 		}
@@ -42,5 +47,11 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 
 	public override void droidTapped(GameObject droid) {
 
+	}
+
+	public override void droidCollision(GameObject droid, Collision other) {
+		
+		status = CaptureScreenStatus.Successful;
+		
 	}
 }
