@@ -48,10 +48,10 @@ public class DroidFactory : Singleton<DroidFactory> {
 
 		int index = Random.Range(0, availableDroids.Length);
 		float x = player.transform.position.x + GenerateRandomRange();
-		float y = player.transform.position.y;
+		float y = 2.11f;
 		float z = player.transform.position.z + GenerateRandomRange();
 
-		liveDroids.Add(Instantiate(availableDroids[index], new Vector3(x, 2.11f, z), (index == 0) ? Quaternion.Euler(-90.0f, 0.0f, 0.0f) : Quaternion.identity));
+		liveDroids.Add(Instantiate(availableDroids[index], new Vector3(x, y, z), (index == 0) ? Quaternion.Euler(-90.0f, 0.0f, 0.0f) : Quaternion.identity));
 
 	}
 

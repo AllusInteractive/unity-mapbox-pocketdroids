@@ -28,7 +28,7 @@ public class Player : MonoBehaviour {
 	
 	public void addXP(int xp)
     {
-        this.xp = Mathf.Max(0, xp);
+        this.xp += Mathf.Max(0, xp);
     }
 
     public void addDroid(GameObject droid)

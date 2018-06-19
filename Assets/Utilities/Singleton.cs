@@ -10,8 +10,6 @@ public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour {
 
 			if(instance == null) {
 				instance = FindObjectOfType<T>();
-			} else {
-				Destroy(instance);
 			}
 
 			DontDestroyOnLoad(instance);
