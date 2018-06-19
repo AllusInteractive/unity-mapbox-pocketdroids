@@ -50,8 +50,9 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 	}
 
 	public override void droidCollision(GameObject droid, Collision other) {
-		
+
 		status = CaptureScreenStatus.Successful;
+		SceneTransitionManager.Instance.goToScene(PocketDroidConstants.SCENE_WORLD, new List<GameObject>());
 		
 	}
 }

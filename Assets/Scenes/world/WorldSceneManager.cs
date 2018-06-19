@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class WorldSceneManager : PocketDroidsSceneManager {
 	public override void droidTapped(GameObject droid)
 	{
-		SceneManager.LoadScene(PocketDroidConstants.SCENE_CAPTURE, LoadSceneMode.Additive);
+		List<GameObject> list = new List<GameObject>();
+		list.Add(droid);
+		SceneTransitionManager.Instance.goToScene(PocketDroidConstants.SCENE_CAPTURE, list);
 	}
 
 	public override void playerTapped(GameObject player)
