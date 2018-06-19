@@ -979,6 +979,7 @@ GameObject:
   - component: {fileID: 1438344447}
   - component: {fileID: 1438344446}
   - component: {fileID: 1438344445}
+  - component: {fileID: 1438344449}
   m_Layer: 5
   m_Name: UIRoot
   m_TagString: Untagged
@@ -1064,6 +1065,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1438344449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1438344444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3b283ff084fa34f90ead33c8b0983c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneManager: {fileID: 589842051}
+  successScreen: {fileID: 712277704}
+  failScreen: {fileID: 2040224404}
+  gameScreen: {fileID: 1195233976}
+  orbCountText: {fileID: 3234995}
 --- !u!4 &1531194315 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4259081509004052, guid: 5dae46b53ca322a43bbc3dc414df988c,
