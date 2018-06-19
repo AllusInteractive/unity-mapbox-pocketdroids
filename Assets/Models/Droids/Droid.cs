@@ -47,5 +47,19 @@ public class Droid : MonoBehaviour {
 		}
 
 	}
+
+	private void OnCollisionEnter(Collision other)
+	{
+
+		PocketDroidsSceneManager[] managers = FindObjectsOfType<PocketDroidsSceneManager>();
+		foreach (PocketDroidsSceneManager manager in managers)
+		{
+
+			if(manager.gameObject.activeSelf)
+				manager.droidCollision(this.gameObject, other);
+			
+		}
+		
+	}
 	
 }

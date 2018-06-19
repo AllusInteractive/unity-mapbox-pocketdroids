@@ -69,7 +69,28 @@ public class OverrideOrb : MonoBehaviour {
 	}
 
 	private void updateInputStatus() {
-
+		#if UNITY_EDITOR
+		if (Input.GetMouseButtonDown(0)) {
+			inputStatus = InputStatus.Grabbing;
+		} else if(Input.GetMouseButton(0)) {
+			inputStatus = InputStatus.Holding;
+		} else if(Input.GetMouseButtonUp(0)) {
+			inputStatus = InputStatus.Releasing;
+		} else {
+			inputStatus = InputStatus.None;
+		}
+		#endif
+		#if NOT_UNITY_EDITOR
+		if (Input.GetTouch(0).phase == TouchPhase.Began) {
+			inputStatus = InputStatus.Grabbing;
+		} else if(Input.GetTouch(0).phase == TouchPhase.Ended) {
+			inputStatus = InputStatus.Releasing;
+		} else if(Input.touchCount == 1) {
+			inputStatus = InputStatus.Holding;
+		} else {
+			inputStatus = InputStatus.None;
+		}
+		#endif
 	}
 
 	private void followInput() {
@@ -138,6 +159,22 @@ public class OverrideOrb : MonoBehaviour {
 
 	private void powerDown() {
 		Destroy(gameObject);
+	}
+
+	private void OnCollisionEnter(Collision other) {
+
+		if(!trackingCollisions)
+			return;
+
+		trackingCollisions = false;
+		if(other.gameObject.CompareTag(PocketDroidConstants.TAG_DROID)) {
+			audioSource.PlayOneShot(successSound);
+		} else {
+			audioSource.PlayOneShot(dropSound);
+		}
+
+		Invoke("powerDown", collisionStallTime);
+
 	}
 
 
