@@ -31,6 +31,7 @@ public class Droid : MonoBehaviour {
 	public int Attack { get { return attack; } }
 	public int Defense { get { return defense; } }
 	public int HP { get { return hp; } }
+	public AudioClip CrySound { get { return crySound; } }
 	
 	private void OnMouseDown()
 	{
@@ -60,6 +61,17 @@ public class Droid : MonoBehaviour {
 			
 		}
 		
+	}
+
+	public void loadFromDroidData(DroidData data) {
+
+		spawnRate = data.SpawnRate;
+		catchRate = data.CatchRate;
+		attack = data.Attack;
+		defense = data.Defense;
+		hp = data.HP;
+		crySound = Resources.Load(data.CrySound) as AudioClip;
+
 	}
 	
 }
