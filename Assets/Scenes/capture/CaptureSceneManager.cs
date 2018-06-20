@@ -34,8 +34,10 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 		currentThrowAttempts--;
 
 		if (currentThrowAttempts <= 0) {
-			if(status != CaptureScreenStatus.Successful)
+			if(status != CaptureScreenStatus.Successful) {
 				status = CaptureScreenStatus.Failed;
+				Invoke("moveToWorldScene", 2.0f);
+			}
 		} else {
 			Instantiate(orb, spawnPoint, Quaternion.identity);
 		}
@@ -52,7 +54,12 @@ public class CaptureSceneManager : PocketDroidsSceneManager {
 	public override void droidCollision(GameObject droid, Collision other) {
 
 		status = CaptureScreenStatus.Successful;
-		SceneTransitionManager.Instance.goToScene(PocketDroidConstants.SCENE_WORLD, new List<GameObject>());
+		Invoke("moveToWorldScene", 2.0f);
 		
 	}
+
+	private void moveToWorldScene() {
+		SceneTransitionManager.Instance.goToScene(PocketDroidConstants.SCENE_WORLD, new List<GameObject>());
+	}
+
 }
